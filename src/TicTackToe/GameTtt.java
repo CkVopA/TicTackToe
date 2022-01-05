@@ -1,9 +1,10 @@
 package TicTackToe;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class GameTtt {
     static int sizeField = 3;
     static int dots_to_WIN = 3;
     static int gameMode = 1;
@@ -172,10 +173,8 @@ public class Main {
     // 2. Создание игрового поля
     private static void createGameField(int sizeField) {
         gameField = new char[sizeField][sizeField];
-        for (int i = 0; i < gameField.length; i++) {
-            for (int j = 0; j < gameField[i].length; j++) {
-                gameField[i][j] = DOT_EMPTY;
-            }
+        for (char[] chars : gameField) {
+            Arrays.fill(chars, DOT_EMPTY);
         }
     }
 
@@ -209,7 +208,6 @@ public class Main {
         while (isCellValid(x, y));
         gameField[y][x] = symbol;
         showGameField();
-
     }
 
     // 4.2. Проверка на правильность координат и занятость выбранной позиции для символа
@@ -358,8 +356,8 @@ public class Main {
         // 7. Проверка на НИчью
         public static boolean isFieldFull () {
             for (char[] chars : gameField) {
-                for (int j = 0; j < chars.length; j++) {
-                    if (chars[j] == DOT_EMPTY) {
+                for (char aChar : chars) {
+                    if (aChar == DOT_EMPTY) {
                         return false;
                     }
                 }
